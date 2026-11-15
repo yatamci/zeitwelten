@@ -1,0 +1,10 @@
+{
+  "name": "zeitwelten",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Eine Webseite zum Anzeigen und Umrechnen von vier synchronen Zeitsystemen.",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo \"Static site – no build step required.\""
+  }
+}

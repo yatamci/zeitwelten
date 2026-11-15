@@ -1,0 +1,74 @@
+:root {
+  color-scheme: light;
+  --bg: #eef2ff; --text: #20243a; --muted: #777d98; --card: rgba(255,255,255,.58);
+  --card-border: rgba(255,255,255,.8); --shadow: 0 18px 55px rgba(58,67,117,.10);
+  --dial-face: rgba(255,255,255,.38); --dial-line: #aab1ca; --dial-text: #535b78;
+  --accent: #6c67e8; --accent2: #a29cfb; --hand: #303653; --second: #ee7892;
+}
+[data-theme="dark"] {
+  color-scheme: dark; --bg: #111426; --text: #f0f1ff; --muted: #9ba1bc;
+  --card: rgba(35,40,66,.58); --card-border: rgba(255,255,255,.09);
+  --shadow: 0 18px 55px rgba(0,0,0,.24); --dial-face: rgba(17,20,38,.4);
+  --dial-line: #555d7c; --dial-text: #d0d4ed; --accent: #a29cfb; --accent2: #7771ed;
+  --hand: #f0f1ff; --second: #ff91aa;
+}
+* { box-sizing: border-box; }
+body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:Manrope, sans-serif; transition:background .3s,color .3s; overflow-x:hidden; }
+.ambient { position:fixed; width:460px; height:460px; border-radius:50%; filter:blur(90px); opacity:.28; pointer-events:none; z-index:-1; }
+.ambient-one { background:#a9a5ff; top:-210px; left:-130px; }
+.ambient-two { background:#f5b7d1; right:-190px; top:38%; }
+[data-theme="dark"] .ambient { opacity:.12; }
+.topbar { height:82px; max-width:1440px; margin:auto; padding:0 5.5%; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:2; }
+.brand { color:var(--text); text-decoration:none; font-weight:800; font-size:19px; letter-spacing:-.8px; display:flex; align-items:center; gap:9px; }
+.brand-mark { color:var(--accent); font-size:28px; }
+.brand-light { font-weight:500; opacity:.72; }
+.tabs { position:absolute; left:50%; transform:translateX(-50%); display:flex; gap:5px; padding:5px; border:1px solid var(--card-border); background:var(--card); border-radius:14px; backdrop-filter:blur(18px); }
+.tab,.theme-toggle { border:0; cursor:pointer; color:var(--muted); background:transparent; font:600 12px Manrope,sans-serif; }
+.tab { padding:10px 20px; border-radius:10px; }
+.tab.active { color:var(--text); background:rgba(125,120,235,.15); box-shadow:inset 0 0 0 1px rgba(125,120,235,.12); }
+.theme-toggle { width:42px; height:42px; border:1px solid var(--card-border); border-radius:14px; background:var(--card); font-size:20px; backdrop-filter:blur(18px); }
+main { max-width:1440px; margin:auto; padding:28px 5.5% 55px; }
+.hero { text-align:center; margin:18px auto 42px; }
+.eyebrow,.card-kicker { color:var(--accent); font-size:10px; font-weight:800; letter-spacing:2px; }
+.live-dot { display:inline-block; width:7px; height:7px; background:#53c99a; border-radius:50%; margin:0 7px 1px 0; box-shadow:0 0 0 4px rgba(83,201,154,.13); }
+h1 { font-size:clamp(38px,5.3vw,66px); line-height:1.08; letter-spacing:-3.2px; margin:18px 0 13px; font-weight:800; }
+h1 span { color:var(--accent); }
+.hero-copy { color:var(--muted); font-size:14px; line-height:1.7; max-width:560px; margin:0 auto; }
+.clock-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:17px; }
+.clock-card,.result-card,.glass-panel { background:var(--card); border:1px solid var(--card-border); box-shadow:var(--shadow); backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px); border-radius:23px; }
+.clock-card { padding:23px 17px 21px; min-width:0; text-align:center; }
+.primary-card { background:linear-gradient(145deg,rgba(129,123,240,.16),var(--card)); }
+.card-top,.result-header,.input-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; text-align:left; }
+h2 { font-size:16px; margin:5px 0 0; letter-spacing:-.4px; }
+.format-pill { white-space:nowrap; color:var(--accent); background:rgba(125,120,235,.12); border:1px solid rgba(125,120,235,.13); border-radius:30px; padding:6px 9px; font:500 10px 'DM Mono',monospace; }
+.dial-wrap { width:100%; max-width:240px; margin:24px auto 13px; }
+.dial { width:100%; height:auto; overflow:visible; }
+.digital-time,.result-digital { font:500 clamp(23px,2.1vw,30px) 'DM Mono',monospace; letter-spacing:-1.5px; color:var(--text); font-variant-numeric:tabular-nums; }
+.clock-caption { color:var(--muted); font-size:10px; line-height:1.5; margin-top:9px; min-height:30px; }
+.footnote { text-align:center; color:var(--muted); font-size:11px; line-height:1.7; margin:27px auto 0; max-width:760px; }
+.info-icon { color:var(--accent); margin-right:5px; }
+.view { display:none; animation:fade .35s ease; }.view.active { display:block; }
+@keyframes fade { from {opacity:0;transform:translateY(7px)} to {opacity:1;transform:translateY(0)} }
+.converter-hero { margin-bottom:34px; }
+.converter-panel { max-width:720px; margin:0 auto 23px; padding:26px 30px; }
+.input-heading { align-items:center; margin-bottom:21px; }
+.input-heading h2 { font-size:19px; }
+.time-inputs { display:flex; align-items:end; justify-content:center; gap:13px; }
+.time-inputs label { color:var(--muted); font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; display:flex; flex-direction:column; gap:8px; width:100%; max-width:145px; }
+.time-inputs input { width:100%; min-width:0; border:1px solid var(--card-border); border-radius:13px; padding:13px 8px; text-align:center; color:var(--text); background:rgba(125,120,235,.07); font:500 25px 'DM Mono',monospace; outline:none; }
+.time-inputs input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(125,120,235,.13); }
+.input-colon { font:500 24px 'DM Mono',monospace; padding-bottom:12px; color:var(--muted); }
+.input-actions { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:17px; }
+.secondary-button { border:1px solid var(--card-border); background:rgba(125,120,235,.1); color:var(--accent); padding:10px 14px; border-radius:11px; font:700 11px Manrope,sans-serif; cursor:pointer; }
+.input-error { color:#e46e89; font-size:11px; }
+.converter-results { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.result-card { padding:21px; min-width:0; }
+.result-content { display:flex; align-items:center; gap:12px; margin-top:18px; }
+.result-content .dial { width:55%; max-width:190px; flex:0 0 55%; }
+.result-digital { font-size:clamp(18px,2vw,25px); white-space:nowrap; }
+.result-content p { color:var(--muted); font-size:10px; line-height:1.5; }
+footer { max-width:1440px; padding:20px 5.5% 30px; margin:auto; display:flex; justify-content:space-between; color:var(--muted); font-size:9px; letter-spacing:1.3px; }
+footer span:first-child { font-weight:800; color:var(--accent); }
+@media (max-width:1050px) { .clock-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .clock-card { padding:24px; } .dial-wrap { max-width:260px; } .digital-time { font-size:30px; } }
+@media (max-width:760px) { .topbar { height:72px; padding:0 5%; } main { padding:25px 5% 45px; } .hero { margin:17px auto 30px; } h1 { letter-spacing:-2px; } .clock-grid { gap:12px; } .clock-card { padding:17px 12px; border-radius:18px; } .card-top { flex-direction:column; gap:9px; } .format-pill { font-size:9px; } .dial-wrap { margin:15px auto 10px; } .digital-time { font-size:clamp(19px,5vw,25px); } .clock-caption { font-size:9px; } .converter-results { grid-template-columns:1fr; } .result-content .dial { width:43%; flex-basis:43%; } .result-digital { font-size:29px; } .converter-panel { padding:22px 17px; } .tabs { position:static; transform:none; margin-left:auto; margin-right:12px; } .tab { padding:9px 12px; } }
+@media (max-width:390px) { .brand { font-size:16px; gap:5px; } .theme-toggle { width:36px;height:36px; } .tab { padding:8px 9px; font-size:11px; } .clock-card { padding:14px 9px; } .digital-time { font-size:18px; } .card-top h2 { font-size:14px; } .format-pill { padding:5px 7px; } .time-inputs { gap:7px; } .time-inputs input { font-size:21px; } }

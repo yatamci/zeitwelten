@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef2ff">
+  <meta name="description" content="Vier Zeitsysteme, ein gemeinsamer Augenblick. Vergleiche und konvertiere alternative Zeitformate.">
+  <title>Zeitwelten – Vier Arten, Zeit zu erleben</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Zeitwelten Startseite">
+      <span class="brand-mark">◷</span><span>zeit<span class="brand-light">welten</span></span>
+    </a>
+    <nav class="tabs" aria-label="Hauptnavigation">
+      <button class="tab active" data-tab="clocks">Uhren</button>
+      <button class="tab" data-tab="converter">Konverter</button>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Darstellung wechseln" title="Hell-/Dunkelmodus">
+      <span id="themeIcon">☾</span>
+    </button>
+  </header>
+
+  <main>
+    <section id="clocksView" class="view active">
+      <div class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> LIVE · DEINE LOKALE ZEIT</div>
+        <h1>Ein Moment.<br><span>Vier Zeitwelten.</span></h1>
+        <p class="hero-copy">Ein und derselbe Tag – vier unterschiedliche Arten, ihn einzuteilen.</p>
+      </div>
+      <div class="clock-grid" id="clockGrid">
+        <article class="clock-card primary-card" data-clock="standard">
+          <div class="card-top"><div><span class="card-kicker">ORIGINAL</span><h2>Standardzeit</h2></div><span class="format-pill">24 / 60 / 60</span></div>
+          <div class="dial-wrap"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Uhr Standardzeit"></svg></div>
+          <div class="digital-time">--:--:--</div><div class="clock-caption">24-Stunden-Tag · 12-Stunden-Zifferblatt</div>
+        </article>
+        <article class="clock-card" data-clock="a">
+          <div class="card-top"><div><span class="card-kicker">SYSTEM 01</span><h2>Dreifach-Tag</h2></div><span class="format-pill">36 / 60 / 40</span></div>
+          <div class="dial-wrap"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Uhr 36 60 40"></svg></div>
+          <div class="digital-time">--:--:--</div><div class="clock-caption">36 Stunden · 12er-Zifferblatt · 40-Sekunden-Minute</div>
+        </article>
+        <article class="clock-card" data-clock="b">
+          <div class="card-top"><div><span class="card-kicker">SYSTEM 02</span><h2>Feinzeit</h2></div><span class="format-pill">36 / 48 / 50</span></div>
+          <div class="dial-wrap"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Uhr 36 48 50"></svg></div>
+          <div class="digital-time">--:--:--</div><div class="clock-caption">36 Stunden · 12er-Zifferblatt · 48-Minuten-Stunde</div>
+        </article>
+        <article class="clock-card" data-clock="c">
+          <div class="card-top"><div><span class="card-kicker">SYSTEM 03</span><h2>Zehner-Zeit</h2></div><span class="format-pill">30 / 60 / 48</span></div>
+          <div class="dial-wrap"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Uhr 30 60 48"></svg></div>
+          <div class="digital-time">--:--:--</div><div class="clock-caption">30 Stunden · 10er-Zifferblatt · 48-Sekunden-Minute</div>
+        </article>
+      </div>
+      <p class="footnote"><span class="info-icon">ⓘ</span> Alle Systeme laufen synchron und bilden exakt 24 reale Stunden ab. Die Uhren zeigen die lokale Gerätezeit.</p>
+    </section>
+
+    <section id="converterView" class="view">
+      <div class="hero converter-hero">
+        <div class="eyebrow">ZEIT UMRECHNEN</div>
+        <h1>Dein Moment,<br><span>anders gelesen.</span></h1>
+        <p class="hero-copy">Gib eine Uhrzeit im Standardformat ein und entdecke, wie sie in den anderen Zeitsystemen aussieht.</p>
+      </div>
+      <div class="converter-panel glass-panel">
+        <div class="input-heading"><div><span class="card-kicker">EINGABE</span><h2>Standardzeit</h2></div><span class="format-pill">24 / 60 / 60</span></div>
+        <div class="time-inputs">
+          <label>Stunden<input id="inputHours" type="number" min="0" max="23" value="12" inputmode="numeric"></label>
+          <span class="input-colon">:</span>
+          <label>Minuten<input id="inputMinutes" type="number" min="0" max="59" value="0" inputmode="numeric"></label>
+          <span class="input-colon">:</span>
+          <label>Sekunden<input id="inputSeconds" type="number" min="0" max="59" value="0" inputmode="numeric"></label>
+        </div>
+        <div class="input-actions"><button id="nowButton" class="secondary-button">↗ Aktuelle Zeit einsetzen</button><span id="inputError" class="input-error" role="status"></span></div>
+      </div>
+      <div class="converter-results">
+        <article class="result-card" data-result="a"><div class="result-header"><div><span class="card-kicker">SYSTEM 01</span><h2>Dreifach-Tag</h2></div><span class="format-pill">36 / 60 / 40</span></div><div class="result-content"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Umrechnung 36 60 40"></svg><div><div class="result-digital">--:--:--</div><p>12er-Zifferblatt · 3 Umläufe pro Tag</p></div></div></article>
+        <article class="result-card" data-result="b"><div class="result-header"><div><span class="card-kicker">SYSTEM 02</span><h2>Feinzeit</h2></div><span class="format-pill">36 / 48 / 50</span></div><div class="result-content"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Umrechnung 36 48 50"></svg><div><div class="result-digital">--:--:--</div><p>12er-Zifferblatt · 3 Umläufe pro Tag</p></div></div></article>
+        <article class="result-card" data-result="c"><div class="result-header"><div><span class="card-kicker">SYSTEM 03</span><h2>Zehner-Zeit</h2></div><span class="format-pill">30 / 60 / 48</span></div><div class="result-content"><svg class="dial" viewBox="0 0 260 260" role="img" aria-label="Analoge Umrechnung 30 60 48"></svg><div><div class="result-digital">--:--:--</div><p>10er-Zifferblatt · 3 Umläufe pro Tag</p></div></div></article>
+      </div>
+      <p class="footnote"><span class="info-icon">ⓘ</span> Die Umrechnung erfolgt über den Anteil am realen Tag. Jede Eingabe entspricht daher in allen Systemen exakt demselben Zeitpunkt.</p>
+    </section>
+  </main>
+  <footer><span>ZEITWELTEN</span><span>Ein Tag · vier Perspektiven</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
